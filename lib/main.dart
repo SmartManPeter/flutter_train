@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:homework1/widgets/taiwan_time.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,70 +10,119 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
         body: Center(
-          child: Counter(defaultCount: 0),
-        ),
-      ),
-    );
-  }
-}
-
-class Counter extends StatefulWidget {
-  final int defaultCount;
-  //final Function({int Values}) TestFuns;
-  const Counter({super.key, required this.defaultCount});
-
-  @override
-  _CounterState createState() => _CounterState();
-}
-
-class _CounterState extends State<Counter> {
-  int Count = 0;
-
-  @override
-  void initState() {
-    Count = widget.defaultCount;
-    super.initState();
-  }
-
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          Count.toString(),
-          style: TextStyle(fontSize: 64),
-        ),
-        Row(
+            child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  Count++;
-                });
-              },
-              icon: Icon(
-                Icons.add,
-                size: 64,
+            Text("過去時間比對現在"),
+            TaiwanTime(
+              time: DateTime.now()
+                  .add(Duration(days: -8))
+                  .add(Duration(seconds: 5)),
+              showFuzzy: true,
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 20,
               ),
             ),
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  Count--;
-                });
-              },
-              icon: Icon(
-                Icons.remove,
-                size: 64,
+            TaiwanTime(
+              time: DateTime.now().add(Duration(days: -5)),
+              showFuzzy: true,
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 20,
               ),
-            )
+            ),
+            TaiwanTime(
+              time: DateTime.now().add(Duration(hours: -6)),
+              showFuzzy: true,
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 20,
+              ),
+            ),
+            TaiwanTime(
+              time: DateTime.now().add(Duration(minutes: -30)),
+              showFuzzy: true,
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 20,
+              ),
+            ),
+            TaiwanTime(
+              time: DateTime.now().add(Duration(minutes: -4)),
+              showFuzzy: true,
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 20,
+              ),
+            ),
+            Text("\n現在時間"),
+            TaiwanTime(
+              time: DateTime.now(),
+              showFuzzy: false,
+              style: TextStyle(
+                color: Colors.blue,
+                fontSize: 20,
+              ),
+            ),
+            Text("\n未來時間比對現在"),
+            TaiwanTime(
+              time: DateTime.now()
+                  .add(Duration(minutes: 4))
+                  .add(Duration(seconds: 5)),
+              showFuzzy: true,
+              style: TextStyle(
+                color: Colors.green,
+                fontSize: 20,
+              ),
+            ),
+            TaiwanTime(
+              time: DateTime.now()
+                  .add(Duration(minutes: 30))
+                  .add(Duration(seconds: 5)),
+              showFuzzy: true,
+              style: TextStyle(
+                color: Colors.green,
+                fontSize: 20,
+              ),
+            ),
+            TaiwanTime(
+              time: DateTime.now()
+                  .add(Duration(hours: 6))
+                  .add(Duration(seconds: 5)),
+              showFuzzy: true,
+              style: TextStyle(
+                color: Colors.green,
+                fontSize: 20,
+              ),
+            ),
+            TaiwanTime(
+              time: DateTime.now()
+                  .add(Duration(days: 5))
+                  .add(Duration(seconds: 5)),
+              showFuzzy: true,
+              style: TextStyle(
+                color: Colors.green,
+                fontSize: 20,
+              ),
+            ),
+            TaiwanTime(
+              time: DateTime.now()
+                  .add(Duration(days: 8))
+                  .add(Duration(seconds: 5)),
+              showFuzzy: true,
+              style: TextStyle(
+                color: Colors.green,
+                fontSize: 20,
+              ),
+            ),
           ],
-        )
-      ],
+        )),
+      ),
     );
   }
 }
