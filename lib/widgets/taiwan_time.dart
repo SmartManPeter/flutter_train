@@ -2,22 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:homework1/main.dart';
 import 'package:intl/intl.dart';
 
-class TaiwanTime extends StatefulWidget {
+class TaiwanTime extends StatelessWidget {
   final DateTime time;
   final bool showFuzzy;
   final TextStyle? style;
-  const TaiwanTime(
-      {super.key, required this.time, this.showFuzzy = false, this.style});
-
-  @override
-  _TaiwanTimeState createState() => _TaiwanTimeState();
-}
-
-class _TaiwanTimeState extends State<TaiwanTime> {
-  @override
-  void initState() {
-    super.initState();
-  }
+  const TaiwanTime({super.key, required this.time, this.showFuzzy = false, this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +15,8 @@ class _TaiwanTimeState extends State<TaiwanTime> {
     return Column(
       children: [
         Text(
-          formatTaiwanDateTime(widget.time, widget.showFuzzy),
-          style: widget.style ?? TextStyle(fontSize: 16, color: Colors.black),
+          formatTaiwanDateTime(time, showFuzzy),
+          style: style ?? TextStyle(fontSize: 16, color: Colors.black),
         ),
       ],
     );
@@ -68,12 +57,9 @@ String formatTaiwanDateTime(DateTime time, bool showFuzzy) {
     if (difference.inMinutes.abs() < 5) {
       fuzzyStr = diffMinutes < 0 ? "即將發生" : "剛剛";
     } else if (difference.inHours.abs() < 1) {
-      fuzzyStr = diffMinutes < 0
-          ? "${diffMinutes.abs()}分鐘後"
-          : "${diffMinutes.abs()}分鐘前";
+      fuzzyStr = diffMinutes < 0 ? "${diffMinutes.abs()}分鐘後" : "${diffMinutes.abs()}分鐘前";
     } else if (difference.inDays.abs() < 1) {
-      fuzzyStr =
-          diffHours < 0 ? "${diffHours.abs()}小時後" : "${diffHours.abs()}小時前";
+      fuzzyStr = diffHours < 0 ? "${diffHours.abs()}小時後" : "${diffHours.abs()}小時前";
     } else if (difference.inDays.abs() < 7) {
       fuzzyStr = diffDays < 0 ? "${diffDays.abs()}天後" : "${diffDays.abs()}天前";
     } else {

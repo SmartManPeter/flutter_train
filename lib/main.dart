@@ -19,9 +19,7 @@ class MainApp extends StatelessWidget {
           children: [
             Text("過去時間比對現在"),
             TaiwanTime(
-              time: DateTime.now()
-                  .add(Duration(days: -8))
-                  .add(Duration(seconds: 5)),
+              time: DateTime.now().add(Duration(days: -8)).add(Duration(seconds: 5)),
               showFuzzy: true,
               style: TextStyle(
                 color: Colors.red,
@@ -71,9 +69,7 @@ class MainApp extends StatelessWidget {
             ),
             Text("\n未來時間比對現在"),
             TaiwanTime(
-              time: DateTime.now()
-                  .add(Duration(minutes: 4))
-                  .add(Duration(seconds: 5)),
+              time: DateTime.now().add(Duration(minutes: 4)).add(Duration(seconds: 5)).add(Duration(seconds: 5)),
               showFuzzy: true,
               style: TextStyle(
                 color: Colors.green,
@@ -81,9 +77,7 @@ class MainApp extends StatelessWidget {
               ),
             ),
             TaiwanTime(
-              time: DateTime.now()
-                  .add(Duration(minutes: 30))
-                  .add(Duration(seconds: 5)),
+              time: DateTime.now().add(Duration(minutes: 30)).add(Duration(seconds: 5)),
               showFuzzy: true,
               style: TextStyle(
                 color: Colors.green,
@@ -91,9 +85,7 @@ class MainApp extends StatelessWidget {
               ),
             ),
             TaiwanTime(
-              time: DateTime.now()
-                  .add(Duration(hours: 6))
-                  .add(Duration(seconds: 5)),
+              time: DateTime.now().add(Duration(hours: 6)).add(Duration(seconds: 5)),
               showFuzzy: true,
               style: TextStyle(
                 color: Colors.green,
@@ -101,9 +93,7 @@ class MainApp extends StatelessWidget {
               ),
             ),
             TaiwanTime(
-              time: DateTime.now()
-                  .add(Duration(days: 5))
-                  .add(Duration(seconds: 5)),
+              time: DateTime.now().add(Duration(days: 5)).add(Duration(seconds: 5)),
               showFuzzy: true,
               style: TextStyle(
                 color: Colors.green,
@@ -111,9 +101,7 @@ class MainApp extends StatelessWidget {
               ),
             ),
             TaiwanTime(
-              time: DateTime.now()
-                  .add(Duration(days: 8))
-                  .add(Duration(seconds: 5)),
+              time: DateTime.now().add(Duration(days: 8)).add(Duration(seconds: 5)),
               showFuzzy: true,
               style: TextStyle(
                 color: Colors.green,
