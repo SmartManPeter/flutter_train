@@ -1,0 +1,80 @@
+[
+    {
+        "id": 1,
+        "name": "雙層吉士堡套餐(Double Cheeseburger Set)",
+        "rates": [
+            {
+                "ratevalue": "1",
+                "ratetext": "不好吃"
+            },
+            {
+                "ratevalue": "2",
+                "ratetext": "餐點太冷了"
+            },
+            {
+                "ratevalue": "3",
+                "ratetext": "分量太少"
+            },
+            {
+                "ratevalue": "4",
+                "ratetext": "太貴了不划算"
+            },
+            {
+                "ratevalue": "5",
+                "ratetext": "出餐速度太慢"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "大麥克套餐(Big Mike Set)",
+        "rates": [
+            {
+                "ratevalue": "1",
+                "ratetext": "不好吃"
+            },
+            {
+                "ratevalue": "2",
+                "ratetext": "餐點太冷了"
+            },
+            {
+                "ratevalue": "3",
+                "ratetext": "分量太少"
+            },
+            {
+                "ratevalue": "4",
+                "ratetext": "太貴了不划算"
+            },
+            {
+                "ratevalue": "5",
+                "ratetext": "出餐速度太慢"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "雙層四盎司牛肉堡套餐(Double 4-ounce beef burger set)",
+        "rates": [
+            {
+                "ratevalue": "1",
+                "ratetext": "不好吃"
+            },
+            {
+                "ratevalue": "2",
+                "ratetext": "餐點太冷了"
+            },
+            {
+                "ratevalue": "3",
+                "ratetext": "分量太少"
+            },
+            {
+                "ratevalue": "4",
+                "ratetext": "太貴了不划算"
+            },
+            {
+                "ratevalue": "5",
+                "ratetext": "出餐速度太慢"
+            }
+        ]
+    }
+]
