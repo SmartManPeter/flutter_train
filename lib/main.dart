@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:homework1/widgets/todoScreen.dart';
+import 'package:homework1/widgets/todo_screen.dart';
 
 void main() {
   runApp(const MyApp());

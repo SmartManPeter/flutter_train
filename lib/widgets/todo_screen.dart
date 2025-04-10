@@ -1,11 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:homework1/widgets/taiwan_time.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 
 class Todo {
   String title;
   bool isCompleted;
+  DateTime createdAt;
 
-  Todo({required this.title, this.isCompleted = false});
+  Todo({
+    required this.title,
+    this.isCompleted = false,
+    DateTime? createdAt,
+  }) : createdAt = createdAt ?? DateTime.now();
+
+  Map<String, dynamic> toJson() => {
+        'title': title,
+        'isCompleted': isCompleted,
+        'createdAt': createdAt.toIso8601String(),
+      };
+
+  factory Todo.fromJson(Map<String, dynamic> json) => Todo(
+        title: json['title'],
+        isCompleted: json['isCompleted'],
+        createdAt: DateTime.parse(json['createdAt']),
+      );
 }
 
 class TodoProvider extends ChangeNotifier {
@@ -13,19 +33,43 @@ class TodoProvider extends ChangeNotifier {
 
   List<Todo> get todos => _todos;
 
-  void addTodo(String title) {
+  TodoProvider() {
+    _loadFromPrefs();
+  }
+
+  Future<void> addTodo(String title) async {
     _todos.add(Todo(title: title));
+    await _saveToPrefs();
     notifyListeners();
   }
 
-  void toggleTodo(int index) {
+  Future<void> toggleTodo(int index) async {
     _todos[index].isCompleted = !_todos[index].isCompleted;
+    await _saveToPrefs();
     notifyListeners();
   }
 
-  void removeTodo(int index) {
+  Future<void> removeTodo(int index) async {
     _todos.removeAt(index);
+    await _saveToPrefs();
     notifyListeners();
+  }
+
+  Future<void> _saveToPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    final todoJson = _todos.map((e) => e.toJson()).toList();
+    prefs.setString('todos', jsonEncode(todoJson));
+  }
+
+  Future<void> _loadFromPrefs() async {
+    final prefs = await SharedPreferences.getInstance();
+    final jsonString = prefs.getString('todos');
+    if (jsonString != null) {
+      final List<dynamic> jsonData = jsonDecode(jsonString);
+      _todos.clear();
+      _todos.addAll(jsonData.map((e) => Todo.fromJson(e)).toList());
+      notifyListeners();
+    }
   }
 }
 
@@ -121,6 +165,14 @@ class TodoScreenState extends State<TodoScreen> {
                       style: TextStyle(
                         fontSize: 18,
                         decoration: todo.isCompleted ? TextDecoration.lineThrough : TextDecoration.none,
+                      ),
+                    ),
+                    subtitle: TaiwanTime(
+                      time: todo.createdAt,
+                      showFuzzy: true,
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14,
                       ),
                     ),
                     trailing: IconButton(
